@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 800px; /* Increase max-width for longer form */
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+.form {
+    margin-top: 20px;
+}
+
+.input-group {
+    margin-bottom: 30px; /* Increase margin between input groups */
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.rounded-input {
+    border-radius: 20px; /* Increase border-radius for inputs */
+    overflow: hidden;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.create-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 30px;
+    border: none;
+    border-radius: 20px;
+    background-color: #ff00ae; /* Purple button color */
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.create-button:hover {
+    background-color: #ff0000; /* Red button color on hover */
+}

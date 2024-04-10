@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="static/css/style.css">
+
+   
+    <title>Generate URL</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Generate a Regular Site</h2>
+        <form method="POST" class="form">
+            <div class="input-group">
+                <label for="name">Name:</label>
+                <div class="rounded-input">
+                    <input type="text" id="name" name="name" required>
+                    
+                </div>
+            </div>
+            <div class="input-group">
+                <label for="webhook_url">Discord Webhook URL:</label>
+                <div class="rounded-input">
+                    <input type="text" id="webhook_url" name="webhook_url" required>
+                 
+                </div>
+            </div>
+            <button type="submit" class="create-button">Create Now!</button>
+        </form>
+    </div>
+</body>
+</html>

